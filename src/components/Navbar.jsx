@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import"../index.css"
 import { NavLink } from 'react-router-dom'
 
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
+
+
 const Navbar = (props) => {
+
+    let hamburgerref=useRef();
+    let menueref=useRef();
+
     return (
         <div className='navbar-container'>
 
-            <div className="left">
+            <div onClick={()=>{location.href="/Home"}} className="left">
                 <div className="logo">
                     <img src="logo.PNG" alt="" />
                 </div>
@@ -29,6 +37,13 @@ const Navbar = (props) => {
                 <button onClick={()=>{props.lang=="english"?(props.s("hindi")):(props.s("english"))}}>{props.lang=="english"?"हिंदी":"English"}</button>
             </div>
 
+            <div ref={hamburgerref} onClick={()=>{props.optref.current.setAttribute("style","transform: translate(1%,10px);")}} className="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            
 
         </div>
     )
